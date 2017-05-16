@@ -1,0 +1,1 @@
+function updateInput(e,i){$(i).val(e.replace(/theta/gi,"θ").replace(/pi/gi,"π"))}$(function(){$("#expression").keypress(function(e){return!(e.which&&13==e.which||e.keyCode&&13==e.keyCode)||($("#button").click(),!1)})});

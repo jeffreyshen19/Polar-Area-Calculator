@@ -1,0 +1,145 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*:focus {
+  outline: 0; }
+
+@font-face {
+  font-family: fjalla;
+  src: url("../fonts/fjallaOne.ttf"); }
+
+@font-face {
+  font-family: average;
+  src: url("../fonts/average.ttf"); }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #222831;
+  font-family: fjalla;
+  font-size: 22px;
+  margin-bottom: 2px; }
+
+p {
+  font-family: average;
+  color: #393E46;
+  font-size: 14px; }
+
+#wrapper {
+  display: flex; }
+  #wrapper #sidebar, #wrapper #graph {
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box; }
+  #wrapper #sidebar {
+    width: 30vw;
+    background-color: #EEEEEE;
+    padding: 15px; }
+  #wrapper #graph {
+    width: 70vw; }
+
+#sidebar #expressionwrapper {
+  position: relative; }
+  #sidebar #expressionwrapper p {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    color: #dcdcdc;
+    font-size: 14px;
+    line-height: 3em; }
+  #sidebar #expressionwrapper input#expression {
+    border: none;
+    color: #393E46;
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 3em;
+    font-size: 14px;
+    text-indent: 22px;
+    line-height: 3em;
+    font-family: average; }
+
+#sidebar #boundswrapper {
+  margin-top: 5px; }
+  #sidebar #boundswrapper .bound {
+    display: inline-block;
+    border: none;
+    color: #393E46;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    height: 2.5em;
+    width: 40px;
+    font-family: average;
+    text-align: center; }
+  #sidebar #boundswrapper p {
+    display: inline-block;
+    line-height: 2.5em;
+    background-color: white; }
+
+#sidebar #button {
+  background-color: #0092CA;
+  color: #EEEEEE;
+  border: none;
+  margin-top: 5px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: fjalla;
+  font-size: 14px;
+  height: 2.5em;
+  cursor: pointer; }
+
+#sidebar #integralrepresentation p {
+  font-size: 25px; }
+
+#sidebar #integralrepresentation #answer {
+  width: 5px;
+  text-overflow: hidden; }
+
+#sidebar #credits {
+  position: absolute;
+  bottom: 15px;
+  left: 15px; }

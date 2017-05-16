@@ -1,0 +1,20 @@
+#wrapper{
+  display: flex;
+
+  #sidebar, #graph{
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  #sidebar{
+    width: 30vw;
+    background-color: $white;
+    padding: 15px;
+  }
+
+  #graph{
+    width: 70vw;
+  }
+
+}

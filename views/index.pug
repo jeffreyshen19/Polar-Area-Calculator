@@ -1,0 +1,42 @@
+doctype html
+html(lang = "en")
+  head
+    meta(charset = "utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    title Polar Area Calculator
+    
+    link(href = "/dist/main.css" rel = "stylesheet" type = "text/css")
+    script(type = "text/javascript" async src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML")
+    script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src = "/bower_components/mathjs/dist/math.min.js")
+    script(src = "/dist/input.js")
+    script(src = "/dist/plotter.js")
+  body
+    #wrapper
+      #sidebar
+        h2 Equation to graph:
+        p (In terms of θ)
+        br
+        #expressionwrapper
+          p r = 
+          input#expression(type = "text" onkeyup="updateInput(this.value, '#expression')")
+        #boundswrapper
+          input#lowerbound.bound(type = "text" value = "0" onkeyup = "updateInput(this.value, '#lowerbound')")
+          p ≤&nbsp; θ	&nbsp;≤
+          input#upperbound.bound(type = "text" value = "2π" onkeyup = "updateInput(this.value, '#upperbound')")
+        button#button(onclick = "submitEquation()") Plot Equation
+        br
+        br
+        br
+        h2 Integral Representation
+        p (Select a zone on the graph to see its integral representation and value)
+        br
+        #integralrepresentation
+          p $$\frac{1}{2}\int_{a}^{b} r^2 dθ = 0.2111$$
+        #credits
+          p Project by Jeffrey Shen
+      #graph
+        canvas#graphCanvas(width = "500" height = "500")
+        

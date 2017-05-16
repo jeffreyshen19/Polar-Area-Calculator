@@ -1,0 +1,17 @@
+{
+  "name": "polar-solver",
+  "description": "An interactive online tool to visualize and solve areas bounded by polar curves",
+  "main": "index.js",
+  "authors": [
+    "Jeffrey Shen"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

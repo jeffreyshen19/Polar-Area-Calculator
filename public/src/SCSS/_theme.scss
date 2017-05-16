@@ -1,0 +1,27 @@
+@font-face{
+  font-family: fjalla;
+  src: url("../fonts/fjallaOne.ttf");
+}
+
+@font-face{
+  font-family: average;
+  src: url("../fonts/average.ttf");
+}
+
+$black: #222831;
+$gray: #393E46;
+$blue: #0092CA;
+$white: #EEEEEE;
+
+h1, h2, h3, h4, h5, h6{
+  color: $black;
+  font-family: fjalla;
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+p{
+  font-family: average;
+  color: $gray;
+  font-size: 14px;
+}

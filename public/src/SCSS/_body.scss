@@ -1,0 +1,82 @@
+#sidebar{
+  #expressionwrapper{
+    position: relative;
+    p{
+      position: absolute;
+      left: 10px;
+      top: 0;
+      color: #dcdcdc;
+      font-size: 14px;
+      line-height: 3em;
+    }
+    input#expression{
+      border: none;
+      color: $gray;
+      padding: 5px 10px;
+      width: 100%;
+      box-sizing: border-box;
+      height: 3em;
+      font-size: 14px;
+      text-indent: 22px;
+      line-height: 3em;
+      font-family: average;
+    }
+  }
+
+  #boundswrapper{
+    margin-top: 5px;
+    .bound{
+      display: inline-block;
+      border: none;
+      color: $gray;
+      padding: 5px 10px;
+      box-sizing: border-box;
+      font-size: 14px;
+      height: 2.5em;
+      width: 40px;
+      font-family: average;
+      text-align: center;
+    }
+    p{
+      display: inline-block;
+      //padding: 0 10px;
+      line-height: 2.5em;
+      background-color: white;
+    }
+  }
+
+  #button{
+    background-color: $blue;
+    color: $white;
+    border: none;
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: fjalla;
+    font-size: 14px;
+    height: 2.5em;
+    cursor: pointer;
+  }
+
+  #integralrepresentation{
+    p{
+      font-size: 25px;
+    }
+    #answer{
+      width: 5px;
+      text-overflow: hidden;
+    }
+  }
+
+  #credits{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+#graph{
+  #graphCanvas{
+  }
+}
