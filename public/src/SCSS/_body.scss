@@ -10,37 +10,35 @@
       line-height: 3em;
     }
     input#expression{
-      border: none;
-      color: $gray;
-      padding: 5px 10px;
       width: 100%;
-      box-sizing: border-box;
       height: 3em;
-      font-size: 14px;
       text-indent: 22px;
       line-height: 3em;
-      font-family: average;
     }
   }
 
   #boundswrapper{
     margin-top: 5px;
-    .bound{
+    input{
       display: inline-block;
-      border: none;
-      color: $gray;
-      padding: 5px 10px;
-      box-sizing: border-box;
-      font-size: 14px;
       height: 2.5em;
+    }
+    .bound{
       width: 40px;
-      font-family: average;
       text-align: center;
+    }
+    #step{
+      width: 80px;
     }
     p{
       display: inline-block;
-      //padding: 0 10px;
       line-height: 2.5em;
+    }
+    #steptext{
+      margin-left: 15px;
+      margin-right: 10px;
+    }
+    #theta{
       background-color: white;
     }
   }

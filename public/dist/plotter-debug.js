@@ -1,4 +1,4 @@
-var STEP = 0.001;
+var step;
 var scalingFactor;
 
 $(document).ready(function(){
@@ -29,6 +29,8 @@ function submitEquation(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   drawAxes();
+
+  step = parseFloat($("#step").val());
 
   var lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
   var upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
@@ -77,7 +79,7 @@ function submitEquation(){
 
   ctx.fillStyle = "#0092CA";
 
-  for(var theta = lowerBound; theta <= upperBound; theta += STEP){
+  for(var theta = lowerBound; theta <= upperBound; theta += step){
     var r = node.eval({x: theta});
     var x = r * math.eval("cos(" + theta + ")") * scalingFactor;
     var y = r * math.eval("sin(" + theta + ")") * scalingFactor;
@@ -88,7 +90,7 @@ function submitEquation(){
 
 function getMaxRadius(a, b){
   var maximumRadius = Number.MIN_VALUE;
-  for(var theta = a; theta <= b; theta += STEP){
+  for(var theta = a; theta <= b; theta += step){
     var r = node.eval({x: theta});
     if(r > maximumRadius) maximumRadius = r;
   }

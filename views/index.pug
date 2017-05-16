@@ -24,8 +24,10 @@ html(lang = "en")
           input#expression(type = "text" onkeyup="updateInput(this.value, '#expression')")
         #boundswrapper
           input#lowerbound.bound(type = "text" value = "0" onkeyup = "updateInput(this.value, '#lowerbound')")
-          p ≤&nbsp; θ	&nbsp;≤
+          p#theta ≤&nbsp; θ	&nbsp;≤
           input#upperbound.bound(type = "text" value = "2π" onkeyup = "updateInput(this.value, '#upperbound')")
+          p#steptext Step size: 
+          input#step(type = "text" value = "0.001") 
         button#button(onclick = "submitEquation()") Plot Equation
         br
         br

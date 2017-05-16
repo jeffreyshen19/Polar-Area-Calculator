@@ -67,6 +67,14 @@ p {
   color: #393E46;
   font-size: 14px; }
 
+input {
+  color: #393E46;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: average;
+  border: none; }
+
 #wrapper {
   display: flex; }
   #wrapper #sidebar, #wrapper #graph {
@@ -90,33 +98,28 @@ p {
     font-size: 14px;
     line-height: 3em; }
   #sidebar #expressionwrapper input#expression {
-    border: none;
-    color: #393E46;
-    padding: 5px 10px;
     width: 100%;
-    box-sizing: border-box;
     height: 3em;
-    font-size: 14px;
     text-indent: 22px;
-    line-height: 3em;
-    font-family: average; }
+    line-height: 3em; }
 
 #sidebar #boundswrapper {
   margin-top: 5px; }
-  #sidebar #boundswrapper .bound {
+  #sidebar #boundswrapper input {
     display: inline-block;
-    border: none;
-    color: #393E46;
-    padding: 5px 10px;
-    box-sizing: border-box;
-    font-size: 14px;
-    height: 2.5em;
+    height: 2.5em; }
+  #sidebar #boundswrapper .bound {
     width: 40px;
-    font-family: average;
     text-align: center; }
+  #sidebar #boundswrapper #step {
+    width: 80px; }
   #sidebar #boundswrapper p {
     display: inline-block;
-    line-height: 2.5em;
+    line-height: 2.5em; }
+  #sidebar #boundswrapper #steptext {
+    margin-left: 15px;
+    margin-right: 10px; }
+  #sidebar #boundswrapper #theta {
     background-color: white; }
 
 #sidebar #button {
