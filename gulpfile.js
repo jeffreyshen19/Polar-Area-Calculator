@@ -5,7 +5,7 @@ var pug = require('gulp-pug');
 var webserver = require('gulp-webserver');
 
 gulp.task('webserver', function() {
-  gulp.src('./public')
+  gulp.src('.')
   .pipe(webserver({
     livereload: true,
     open: true
@@ -13,9 +13,9 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('views', function buildHTML() {
-  return gulp.src('./views/*.pug')
+  return gulp.src('./public/src/PUG/*.pug')
   .pipe(pug())
-  .pipe(gulp.dest('./public'));
+  .pipe(gulp.dest('.'));
 });
 
 gulp.task('sass', function () {
@@ -46,7 +46,7 @@ gulp.task('js:watch', function () {
 });
 
 gulp.task('pug:watch', function () {
-  gulp.watch('./views/*.pug', ['views']);
+  gulp.watch('./public/src/PUG/*.pug', ['views']);
 });
 
 gulp.task('default', ['sass', 'sass:watch', 'compress', 'js:watch', 'views', 'pug:watch', 'webserver']);
