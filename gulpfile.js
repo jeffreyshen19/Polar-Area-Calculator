@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var minify = require('gulp-minify');
 var pug = require('gulp-pug');
 var webserver = require('gulp-webserver');
+var concat = require('gulp-concat');
 
 gulp.task('webserver', function() {
   gulp.src('.')
@@ -30,15 +31,14 @@ gulp.task('sass:watch', function () {
 
 gulp.task('compress', function() {
   gulp.src('./public/src/JS/*.js')
+    .pipe(concat('index.js'))
     .pipe(minify({
         ext:{
-            src:'-debug.js',
-            min:'.js'
+            min:'.min.js'
         },
-        exclude: ['tasks'],
-        ignoreFiles: ['.combo.js', '-min.js']
+        noSource: true
     }))
-    .pipe(gulp.dest('./public/dist'))
+    .pipe(gulp.dest('./public/dist/'));
 });
 
 gulp.task('js:watch', function () {

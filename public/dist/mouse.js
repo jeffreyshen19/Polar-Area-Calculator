@@ -1,1 +1,0 @@
-function handleClick(a){var n=a.x,c=a.y;n-=.3*window.innerWidth+canvas.width/2+canvas.offsetLeft,c-=canvas.offsetTop,c=canvas.height/2-c,n/=scalingFactor,c/=scalingFactor,alert(n+", "+c)}function calculateTheta(a,n){}$(document).ready(function(){canvas.addEventListener("mousedown",handleClick,!1)});

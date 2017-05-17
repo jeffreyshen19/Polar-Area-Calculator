@@ -14,7 +14,17 @@ function handleClick(e){
   x /= scalingFactor;
   y /= scalingFactor;
 
-  alert(x + ", " + y);
+  console.log(x + ", " + y);
+
+  //alert(x + ", " + y);
+
+  updateIntegral(0, 1, 5);
+}
+
+function updateIntegral(a, b, val){
+  $("#integralrepresentation p").html("$$\\frac{1}{2}\\int_{" + a + "}^{" + b + "} r^2 dθ = " + val + "$$");
+  var math = $("#integralrepresentation p");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
 }
 
 function calculateTheta(x, y){
