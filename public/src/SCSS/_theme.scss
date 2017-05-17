@@ -26,6 +26,11 @@ p{
   font-size: 14px;
 }
 
+a{
+  text-decoration: none;
+  color: $blue;
+}
+
 input{
   color: $gray;
   padding: 5px 10px;

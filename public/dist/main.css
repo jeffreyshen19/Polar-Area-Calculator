@@ -67,6 +67,10 @@ p {
   color: #393E46;
   font-size: 14px; }
 
+a {
+  text-decoration: none;
+  color: #0092CA; }
+
 input {
   color: #393E46;
   padding: 5px 10px;

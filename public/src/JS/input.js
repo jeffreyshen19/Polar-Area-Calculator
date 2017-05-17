@@ -3,7 +3,7 @@ function updateInput(val, id){
 }
 
 $(function() {
-  $("#expression").keypress(function (e) {
+  $("#expression, .bound, #step").keypress(function (e) {
     if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
       $('#button').click();
       return false;
