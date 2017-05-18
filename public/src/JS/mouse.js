@@ -19,7 +19,7 @@ function handleClick(e){
 
 function updateIntegral(a, b, val){
   $("#integralrepresentation p").html("$$\\frac{1}{2}\\int_{" + a + "}^{" + b + "} r^2 dθ = " + val + "$$");
-  var math = $("#integralrepresentation p");
+  var math = document.getElementById("integralrepresentation");
   MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
 }
 
