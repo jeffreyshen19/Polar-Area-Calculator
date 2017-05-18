@@ -1,13 +1,6 @@
 var step;
 var scalingFactor;
 
-$(document).ready(function(){
-  canvas = document.getElementById("graphCanvas");
-  canvas.width = window.innerWidth * 0.7;
-  canvas.height = window.innerHeight;
-  ctx = canvas.getContext("2d");
-});
-
 function drawAxes(){
   //Create axises
   ctx.strokeStyle = "#222831";

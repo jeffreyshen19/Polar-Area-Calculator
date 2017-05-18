@@ -1,7 +1,3 @@
-$(document).ready(function(){
-  canvas.addEventListener("mousedown", handleClick, false);
-});
-
 function handleClick(e){
   var x = e.x;
   var y = e.y;
