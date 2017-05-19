@@ -13,11 +13,13 @@ function drawAxes(){
   ctx.moveTo(canvas.width / 2, 0);
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
+  ctx.save();
 }
 
 function submitEquation(){
   var expression = $("#expression").val().replace(/θ/g, "x");
   node = math.parse(expression);
+  isGraph = true;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -69,6 +71,7 @@ function submitEquation(){
     ctx.lineTo(canvas.width / 2 - scalingFactor * i, canvas.height);
     ctx.stroke();
   }
+  ctx.save();
 
   ctx.fillStyle = "#0092CA";
 
@@ -79,13 +82,23 @@ function submitEquation(){
 
     ctx.fillRect(canvas.width / 2 + x, canvas.height / 2 - y, 2, 2);
   }
+
+  ctx.save();
 }
 
 function getMaxRadius(a, b){
-  var maximumRadius = Number.MIN_VALUE;
+  var expression = $("#expression").val().replace(/θ/g, "x")
+  var derivativeExpression = math.derivative(expression, "x");
+  var criticalNumbers = [a, b];
   for(var theta = a; theta <= b; theta += step){
-    var r = node.eval({x: theta});
-    if(r > maximumRadius) maximumRadius = r;
+    var derivative = derivativeExpression.eval({x: theta});
+    if(Math.abs(derivative) <= 0.001) criticalNumbers.push(theta);
   }
+  console.log(criticalNumbers);
+  var maximumRadius = node.eval({x: a});
+  for(var i = 1; i < criticalNumbers.length; i++){
+    if(node.eval({x: criticalNumbers[i]}) > maximumRadius) maximumRadius = node.eval({x: criticalNumbers[i]});
+  }
+  console.log(maximumRadius);
   return maximumRadius;
 }

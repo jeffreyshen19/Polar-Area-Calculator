@@ -1,4 +1,5 @@
 var canvas, ctx;
+var isGraph = false;
 
 $(document).ready(function(){
   canvas = document.getElementById("graphCanvas");
