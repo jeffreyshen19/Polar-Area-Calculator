@@ -1,5 +1,22 @@
-var step;
-var scalingFactor;
+var step, scalingFactor, expression, node, lowerBound, upperBound;
+
+function submitEquation(){
+  expression = $("#expression").val().replace(/θ/g, "x");
+  node = math.parse(expression);
+  isGraph = true;
+
+  //Initialize values
+  step = parseFloat($("#step").val());
+  lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
+  upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
+  scalingFactor = (canvas.height - 40) / (2 * Math.round(getMaxRadius()));
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
+
+  drawAxes();
+  drawGrid();
+  drawGraph();
+}
 
 function drawAxes(){
   //Create axises
@@ -13,26 +30,10 @@ function drawAxes(){
   ctx.moveTo(canvas.width / 2, 0);
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
-  ctx.save();
 }
 
-function submitEquation(){
-  var expression = $("#expression").val().replace(/θ/g, "x");
-  node = math.parse(expression);
-  isGraph = true;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  drawAxes();
-
-  step = parseFloat($("#step").val());
-
-  var lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
-  var upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
-
-  scalingFactor = (canvas.height - 40) / (2 * Math.round(getMaxRadius(lowerBound, upperBound)));
-
-  //Create the grid of lines every scalingFactor apart
+function drawGrid(){
+  //Create the grid of lines spaced accordingly
   for(var i = 0.5; true; i += 0.5){
     if(scalingFactor * i > canvas.height / 2) break;
     if(i % 1 == 0){
@@ -71,10 +72,11 @@ function submitEquation(){
     ctx.lineTo(canvas.width / 2 - scalingFactor * i, canvas.height);
     ctx.stroke();
   }
-  ctx.save();
+}
 
+function drawGraph(){
+  //Plots the graph
   ctx.fillStyle = "#0092CA";
-
   for(var theta = lowerBound; theta <= upperBound; theta += step){
     var r = node.eval({x: theta});
     var x = r * math.eval("cos(" + theta + ")") * scalingFactor;
@@ -82,23 +84,18 @@ function submitEquation(){
 
     ctx.fillRect(canvas.width / 2 + x, canvas.height / 2 - y, 2, 2);
   }
-
-  ctx.save();
 }
 
-function getMaxRadius(a, b){
-  var expression = $("#expression").val().replace(/θ/g, "x")
+function getMaxRadius(){
   var derivativeExpression = math.derivative(expression, "x");
-  var criticalNumbers = [a, b];
-  for(var theta = a; theta <= b; theta += step){
+  var criticalNumbers = [lowerBound, upperBound];
+  for(var theta = lowerBound; theta <= upperBound; theta += step){
     var derivative = derivativeExpression.eval({x: theta});
     if(Math.abs(derivative) <= 0.001) criticalNumbers.push(theta);
   }
-  console.log(criticalNumbers);
-  var maximumRadius = node.eval({x: a});
+  var maximumRadius = node.eval({x: lowerBound});
   for(var i = 1; i < criticalNumbers.length; i++){
     if(node.eval({x: criticalNumbers[i]}) > maximumRadius) maximumRadius = node.eval({x: criticalNumbers[i]});
   }
-  console.log(maximumRadius);
   return maximumRadius;
 }
