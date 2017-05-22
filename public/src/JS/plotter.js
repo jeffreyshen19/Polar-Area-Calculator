@@ -19,6 +19,8 @@ function submitEquation(){
   drawAxes();
   drawGrid();
   drawGraph();
+
+  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
 
 function drawAxes(){

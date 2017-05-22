@@ -1,3 +1,5 @@
+var imageData;
+
 function handleClick(e){
   if(isGraph){
     var x = e.x;
@@ -18,19 +20,19 @@ function handleClick(e){
     var a, b;
     for(var i = 0; i < zones.length; i++){
       if(theta <= zones[i]){
-        a = zones[i - 1];
+        if(i == 0) a = zones[zones.length - 1];
+        else a = zones[i - 1];
         b = zones[i];
         break;
       }
     }
+    console.log(zones);
 
-    console.log(theta);
-    console.log(zones)
-    console.log(a + ", " + b);
+    ctx.putImageData(imageData, 0, 0);
 
     fillInArea(a, b);
 
-    updateIntegral(0, 1, 5);
+    updateIntegral(truncate(a), truncate(b), truncate(0.5 * integrate(expression + "^2", a, b)));
   }
 }
 
@@ -43,7 +45,8 @@ function updateIntegral(a, b, val){
 function calculateTheta(){
   var candidates = [];
   for(var theta = lowerBound; theta <= upperBound; theta += 0.001){
-    if(Math.abs(node.eval({x: theta})) <= 0.001) candidates.push(theta);
+    var r = node.eval({x: theta});
+    if(r <= 0.005 && r >= 0) candidates.push(theta);
   }
   return candidates;
 }
