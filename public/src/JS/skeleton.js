@@ -17,4 +17,14 @@ $(document).ready(function(){
       return true;
     }
   });
+
+  canvas.addEventListener('mousemove', function(e) {
+    var mousePos = getMousePos(e);
+    var r = Math.sqrt(Math.pow(mousePos.x, 2) + Math.pow(mousePos.y, 2));
+    var theta = Math.atan2(mousePos.y, mousePos.x);
+    if(theta < 0) theta = Math.PI * 2 + theta;
+
+    $("#polar").html(truncate(r) + ", " + truncate(theta));
+    $("#rectangular").html(truncate(mousePos.x) + ", " + truncate(mousePos.y));
+  }, false);
 });

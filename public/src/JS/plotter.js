@@ -6,6 +6,8 @@ function submitEquation(){
   node = math.parse(expression);
   isGraph = true;
 
+  $("#coordinates").show();
+
   //Initialize values
   step = parseFloat($("#step").val());
   lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
@@ -39,7 +41,7 @@ function drawGrid(){
   ctx.strokeStyle = "#9a9a9a";
   ctx.lineWidth = 2;
   for(var i = 1; true; i++){
-    if(scalingFactor * i > canvas.height / 2) break;
+    if(scalingFactor * i > canvas.width / 2) break;
     ctx.moveTo(0, canvas.height / 2 + scalingFactor * i);
     ctx.lineTo(canvas.width, canvas.height / 2 + scalingFactor * i);
     ctx.moveTo(0, canvas.height / 2 - scalingFactor * i);
@@ -54,7 +56,7 @@ function drawGrid(){
   ctx.strokeStyle = "#dcdcdc";
   ctx.lineWidth = 1;
   for(var i = 0.5; true; i++){
-    if(scalingFactor * i > canvas.height / 2) break;
+    if(scalingFactor * i > canvas.width / 2) break;
     ctx.moveTo(0, canvas.height / 2 + scalingFactor * i);
     ctx.lineTo(canvas.width, canvas.height / 2 + scalingFactor * i);
     ctx.moveTo(0, canvas.height / 2 - scalingFactor * i);
@@ -103,7 +105,9 @@ function getMaxRadius(){
   }
   var maximumRadius = node.eval({x: lowerBound});
   for(var i = 1; i < criticalNumbers.length; i++){
-    if(node.eval({x: criticalNumbers[i]}) > maximumRadius) maximumRadius = node.eval({x: criticalNumbers[i]});
+    if(node.eval({x: criticalNumbers[i]}) > maximumRadius) {
+      maximumRadius = node.eval({x: criticalNumbers[i]});
+    }
   }
   return maximumRadius;
 }

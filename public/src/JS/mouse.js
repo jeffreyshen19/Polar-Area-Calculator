@@ -62,3 +62,11 @@ function fillInArea(a, b){
     ctx.stroke();
   }
 }
+
+function getMousePos(evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: (evt.clientX - rect.left - canvas.width / 2) / scalingFactor,
+    y: (canvas.height / 2 - evt.clientY - rect.top) / scalingFactor
+  };
+}

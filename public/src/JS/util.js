@@ -12,3 +12,8 @@ function integrate(expression, a, b){
 
   return (2 * midpointSum + trapezoidSum) / 3;
 }
+
+function truncate(num){
+  num = "" + num;
+  return num.substring(0, Math.min(num.length, 7));
+}
