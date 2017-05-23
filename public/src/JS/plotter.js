@@ -7,6 +7,9 @@ function submitEquation(){
   isGraph = true;
 
   $("#coordinates").show();
+  $("#polar").html("");
+  $("#rectangular").html("");
+  $("#integralrepresentation p").html("");
 
   //Initialize values
   step = parseFloat($("#step").val());
