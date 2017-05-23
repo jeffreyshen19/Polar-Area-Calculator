@@ -110,8 +110,9 @@ function getMaxRadius(){
   }
   var maximumRadius = node.eval({x: lowerBound});
   for(var i = 1; i < criticalNumbers.length; i++){
-    if(node.eval({x: criticalNumbers[i]}) > maximumRadius) {
-      maximumRadius = node.eval({x: criticalNumbers[i]});
+    var r = Math.abs(node.eval({x: criticalNumbers[i]}));
+    if(r > maximumRadius) {
+      maximumRadius = r;
     }
   }
   return maximumRadius;
