@@ -84,3 +84,9 @@ center#mobile{
   font-family: fjalla;
   font-size: 36px;
 }
+
+@media screen and (max-height: 575px){
+  #credits{
+    display: none;
+  }
+}

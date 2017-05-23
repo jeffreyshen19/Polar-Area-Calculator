@@ -11,7 +11,7 @@ function mobileMode(){
 }
 
 $(window).resize(function() {
-  if(window.innerWidth < 1100 || window.innerHeight < 300){
+  if(window.innerWidth < 1100 || window.innerHeight < 450){
     mobileMode();
   }
   else{

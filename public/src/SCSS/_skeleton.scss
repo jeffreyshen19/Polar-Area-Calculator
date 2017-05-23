@@ -1,5 +1,6 @@
 #wrapper{
   display: flex;
+  overflow: hidden;
 
   #sidebar, #graph{
     height: 100vh;
@@ -11,6 +12,8 @@
     width: 30vw;
     background-color: $white;
     padding: 15px;
+    padding-bottom: 60px;
+    overflow-y: scroll;
   }
 
   #graph{

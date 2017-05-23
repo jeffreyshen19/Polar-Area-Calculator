@@ -29,7 +29,7 @@ $(document).ready(function(){
   }, false);
 
   //Make sure the screen is a good size
-  if(window.innerWidth < 1100 || window.innerHeight < 300){
+  if(window.innerWidth < 1100 || window.innerHeight < 450){
     mobileMode();
   }
 });
