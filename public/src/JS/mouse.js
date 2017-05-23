@@ -26,7 +26,18 @@ function handleClick(e){
         break;
       }
     }
+
     console.log(zones);
+    console.log(theta);
+
+    if(a == null && b == null){
+      a = zones[zones.length - 1];
+      b = zones[0];
+    }
+
+    if(a > b) a -= 2 * Math.PI;
+
+
 
     ctx.putImageData(imageData, 0, 0);
 
@@ -46,7 +57,9 @@ function calculateTheta(){
   var candidates = [];
   for(var theta = lowerBound; theta <= upperBound; theta += 0.001){
     var r = node.eval({x: theta});
-    if(r <= 0.005 && r >= 0) candidates.push(theta);
+    if(r <= 0.005 && r >= 0) {
+      candidates.push(theta);
+    }
   }
   return candidates;
 }
@@ -55,7 +68,7 @@ function fillInArea(a, b){
   ctx.strokeStyle = "#dcdcdc";
   ctx.lineWidth = 1;
   for(var theta = a; theta <= b; theta += step){
-    var r = node.eval({x: theta});
+    var r = Math.abs(node.eval({x: theta}));
     var x = r * math.eval("cos(" + theta + ")") * scalingFactor;
     var y = r * math.eval("sin(" + theta + ")") * scalingFactor;
 
