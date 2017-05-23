@@ -150,3 +150,8 @@ input {
   position: absolute;
   bottom: 15px;
   left: 15px; }
+
+center#mobile {
+  margin-top: 45vh;
+  font-family: fjalla;
+  font-size: 36px; }

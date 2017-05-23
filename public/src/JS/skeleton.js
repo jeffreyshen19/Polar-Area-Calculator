@@ -27,4 +27,9 @@ $(document).ready(function(){
     $("#polar").html(truncate(r) + ", " + truncate(theta));
     $("#rectangular").html(truncate(mousePos.x) + ", " + truncate(mousePos.y));
   }, false);
+
+  //Make sure the screen is a good size
+  if(window.innerWidth < 1100 || window.innerHeight < 300){
+    mobileMode();
+  }
 });

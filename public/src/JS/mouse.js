@@ -66,7 +66,7 @@ function calculateTheta(){
 
 function fillInArea(a, b){
   ctx.strokeStyle = "#dcdcdc";
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 2;
   for(var theta = a; theta <= b; theta += step){
     var r = Math.abs(node.eval({x: theta}));
     var x = r * math.eval("cos(" + theta + ")") * scalingFactor;
