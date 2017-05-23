@@ -9,7 +9,7 @@ var step, scalingFactor, expression, node, lowerBound, upperBound;
 
 function submitEquation(){
   //This method takes care of plotting the graphs
-  expression = $("#expression").val().replace(/θ/g, "x");
+  expression = $("#expression").val().replace(/θ/g, "x").replace(/π/g, "pi").replace(/•/g, "*");
   node = math.parse(expression);
   isGraph = true;
 
