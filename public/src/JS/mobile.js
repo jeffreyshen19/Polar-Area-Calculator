@@ -1,3 +1,10 @@
+/*
+  Mobile.js
+  Jeffrey Shen
+
+  This file takes care of automatically resizing and making sure the app looks good on many screen sizes.
+*/
+
 function desktopMode(){
   $("#mobile").hide();
   $("#sidebar").show();

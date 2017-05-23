@@ -1,3 +1,10 @@
+/*
+  Skeleton.js
+  Jeffrey Shen
+
+  This file handles the main user control loop and structure
+*/
+
 var canvas, ctx;
 var isGraph = false;
 

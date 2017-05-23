@@ -1,3 +1,10 @@
+/*
+  Mouse.js
+  Jeffrey Shen
+
+  This file takes care of processing mouse clicks and hovers.
+*/
+
 var imageData;
 
 function handleClick(e){
@@ -26,9 +33,6 @@ function handleClick(e){
         break;
       }
     }
-
-    console.log(zones);
-    console.log(theta);
 
     if(a == null && b == null){
       a = zones[zones.length - 1];

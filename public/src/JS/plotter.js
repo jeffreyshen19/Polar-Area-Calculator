@@ -1,3 +1,10 @@
+/*
+  Plotter.js
+  Jeffrey Shen
+
+  This file takes care of graphing the equations
+*/
+
 var step, scalingFactor, expression, node, lowerBound, upperBound;
 
 function submitEquation(){
@@ -111,9 +118,7 @@ function getMaxRadius(){
   var maximumRadius = node.eval({x: lowerBound});
   for(var i = 1; i < criticalNumbers.length; i++){
     var r = Math.abs(node.eval({x: criticalNumbers[i]}));
-    if(r > maximumRadius) {
-      maximumRadius = r;
-    }
+    if(r > maximumRadius) maximumRadius = r;
   }
   return maximumRadius;
 }

@@ -1,3 +1,10 @@
+/*
+  Util.js
+  Jeffrey Shen
+
+  This file provides various utility functions like integration and truncating
+*/
+
 function integrate(expression, a, b){
   var stepSize = 0.0005, node = math.parse(expression);
 
