@@ -11,11 +11,17 @@ function mobileMode(){
 }
 
 $(window).resize(function() {
-  console.log("hello");
   if(window.innerWidth < 1100 || window.innerHeight < 300){
     mobileMode();
   }
   else{
     desktopMode();
+  }
+
+  canvas.width = window.innerWidth * 0.7;
+  canvas.height = window.innerHeight;
+
+  if(isGraph){
+    submitEquation();
   }
 });
