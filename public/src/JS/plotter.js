@@ -10,8 +10,24 @@ var step, scalingFactor, expression, node, lowerBound, upperBound;
 function submitEquation(){
   //This method takes care of plotting the graphs
   expression = $("#expression").val().replace(/θ/g, "x").replace(/π/g, "pi").replace(/•/g, "*");
+
   node = math.parse(expression);
+
+  step = parseFloat($("#step").val());
+  lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
+  upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
+
+  try{
+    node.eval({x: lowerBound});
+  }
+  catch(e){
+    displayError("Oops! We couldn't parse that equation");
+    return;
+  }
+
   isGraph = true;
+
+  $("#error").hide();
 
   $("#coordinates").show();
   $("#polar").html("");
@@ -19,9 +35,6 @@ function submitEquation(){
   $("#integralrepresentation p").html("");
 
   //Initialize values
-  step = parseFloat($("#step").val());
-  lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
-  upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
   scalingFactor = (canvas.height - 40) / (2 * Math.round(getMaxRadius()));
 
   ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
@@ -121,4 +134,9 @@ function getMaxRadius(){
     if(r > maximumRadius) maximumRadius = r;
   }
   return maximumRadius;
+}
+
+function displayError(error){
+  $("#error").html(error);
+  $("#error").show();
 }
