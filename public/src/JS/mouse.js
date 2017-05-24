@@ -8,6 +8,7 @@
 var imageData;
 
 function handleClick(e){
+  $("#error").hide();
   if(isGraph){
     var x = e.x;
     var y = e.y;
@@ -23,31 +24,36 @@ function handleClick(e){
     var theta = Math.atan2(y, x);
     if(theta < 0) theta = Math.PI * 2 + theta;
 
-    var zones = calculateTheta();
-    var a, b;
-    for(var i = 0; i < zones.length; i++){
-      if(theta <= zones[i]){
-        if(i == 0) a = zones[zones.length - 1];
-        else a = zones[i - 1];
-        b = zones[i];
-        break;
+    var r = node.eval({x: theta});
+    if(r < 0 && node.eval({x : theta + Math.PI}) < 0) r = Math.abs(node.eval({x: theta + Math.PI}));
+    var rClicked = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+
+    if(r >= 0 && rClicked <= Math.abs(r)){
+      var zones = calculateTheta();
+      var a, b;
+      for(var i = 0; i < zones.length; i++){
+        if(theta <= zones[i]){
+          if(i == 0) a = zones[zones.length - 1];
+          else a = zones[i - 1];
+          b = zones[i];
+          break;
+        }
       }
+
+      if(a == null && b == null){
+        a = zones[zones.length - 1];
+        b = zones[0];
+      }
+
+      if(a > b) a -= 2 * Math.PI;
+
+      ctx.putImageData(imageData, 0, 0);
+      fillInArea(a, b);
+      updateIntegral(truncate(a), truncate(b), truncate(0.5 * integrate(expression + "^2", a, b)));
     }
-
-    if(a == null && b == null){
-      a = zones[zones.length - 1];
-      b = zones[0];
+    else{
+      displayError("You need to click on an actual zone!");
     }
-
-    if(a > b) a -= 2 * Math.PI;
-
-
-
-    ctx.putImageData(imageData, 0, 0);
-
-    fillInArea(a, b);
-
-    updateIntegral(truncate(a), truncate(b), truncate(0.5 * integrate(expression + "^2", a, b)));
   }
 }
 
