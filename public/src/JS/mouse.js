@@ -6,6 +6,7 @@
 */
 
 var imageData;
+var thetaWhenFillingArea, lowerBoundWhenFillingArea, upperBoundWhenFillingArea;
 
 function handleClick(e){
   $("#error").hide();
@@ -48,7 +49,15 @@ function handleClick(e){
       if(a > b) a -= 2 * Math.PI;
 
       ctx.putImageData(imageData, 0, 0);
-      fillInArea(a, b);
+
+      ctx.strokeStyle = "#dcdcdc";
+      ctx.lineWidth = 2;
+      thetaWhenFillingArea = a;
+      lowerBoundWhenFillingArea = a;
+      upperBoundWhenFillingArea = b;
+      window.requestAnimationFrame(fillInArea);
+
+
       updateIntegral(truncate(a), truncate(b), truncate(0.5 * integrate(expression + "^2", a, b)));
     }
     else{
@@ -74,18 +83,19 @@ function calculateTheta(){
   return candidates;
 }
 
-function fillInArea(a, b){
-  ctx.strokeStyle = "#dcdcdc";
-  ctx.lineWidth = 2;
-  for(var theta = a; theta <= b; theta += step){
-    var r = Math.abs(node.eval({x: theta}));
-    var x = r * math.eval("cos(" + theta + ")") * scalingFactor;
-    var y = r * math.eval("sin(" + theta + ")") * scalingFactor;
+function fillInArea(){
+  if(thetaWhenFillingArea <= upperBoundWhenFillingArea){
+    var r = Math.abs(node.eval({x: thetaWhenFillingArea}));
+    var x = r * math.eval("cos(" + thetaWhenFillingArea + ")") * scalingFactor;
+    var y = r * math.eval("sin(" + thetaWhenFillingArea + ")") * scalingFactor;
 
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2, canvas.height / 2);
     ctx.lineTo(canvas.width / 2 + x, canvas.height / 2 - y);
     ctx.stroke();
+    thetaWhenFillingArea += step;
+
+    window.requestAnimationFrame(fillInArea);
   }
 }
 
