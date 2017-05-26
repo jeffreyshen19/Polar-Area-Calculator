@@ -14,6 +14,7 @@ html(lang = "en")
     script(src = "./public/dist/index.min.js")
   body
     center#mobile(hidden) Please use the desktop to view this app.
+    image#loading(src = "/public/graphics/loading_apple.gif" hidden)
     #wrapper
       #sidebar
         h2 Equation to graph:
@@ -54,4 +55,4 @@ html(lang = "en")
           p Project by Jeffrey Shen (See the source code <a href = "https://github.com/jeffreyshen19/Polar-Area-Calculator">here</a>)
       #graph
         canvas#graphCanvas(width = "500" height = "500")
-        
+          

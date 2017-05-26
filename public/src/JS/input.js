@@ -18,10 +18,8 @@ $(document).keyup(function(e){
   if(e.which == 83 && val.search(/cos$/gi) != -1){
     $("#expression").val(val.replace(/cos/gi, "cos("));
   }
-  if(e.which == 78 && val.search(/sin$/gi) != -1){
-    $("#expression").val(val.replace(/sin/gi, "sin("));
-  }
-  if(e.which == 78 && val.search(/tan$/gi) != -1){
-    $("#expression").val(val.replace(/sin/gi, "tan("));
+  if(e.which == 78){
+    if(val.search(/sin$/gi) != -1) $("#expression").val(val.replace(/sin/gi, "sin("));
+    else if(val.search(/tan$/gi) != -1) $("#expression").val(val.replace(/tan/gi, "tan("));
   }
 });

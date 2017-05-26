@@ -31,6 +31,7 @@ function handleClick(e){
 
     if(r >= 0 && rClicked <= Math.abs(r)){
       var zones = calculateTheta();
+
       var a, b;
       for(var i = 0; i < zones.length; i++){
         if(theta <= zones[i]){
@@ -44,6 +45,10 @@ function handleClick(e){
       if(a == null && b == null){
         a = zones[zones.length - 1];
         b = zones[0];
+        if(Math.abs(b - a) <= 0.07) {
+          displayError("You need to click on an actual zone!");
+          return;
+        }
       }
 
       if(a > b) a -= 2 * Math.PI;
@@ -57,8 +62,7 @@ function handleClick(e){
       upperBoundWhenFillingArea = b;
       window.requestAnimationFrame(fillInArea);
 
-
-      updateIntegral(truncate(a), truncate(b), truncate(0.5 * integrate(expression + "^2", a, b)));
+      updateIntegral(convertToPi(a), convertToPi(b), truncate(0.5 * integrate(expression + "^2", a, b)));
     }
     else{
       displayError("You need to click on an actual zone!");
@@ -76,7 +80,7 @@ function calculateTheta(){
   var candidates = [];
   for(var theta = lowerBound; theta <= upperBound; theta += 0.001){
     var r = node.eval({x: theta});
-    if(r <= 0.005 && r >= 0) {
+    if(r <= 0.002 && r >= 0) {
       candidates.push(theta);
     }
   }

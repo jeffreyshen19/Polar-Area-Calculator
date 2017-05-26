@@ -9,41 +9,45 @@ var step, scalingFactor, expression, node, lowerBound, upperBound;
 
 function submitEquation(){
   //This method takes care of plotting the graphs
-  expression = $("#expression").val().replace(/θ/g, "x").replace(/π/g, "pi").replace(/•/g, "*");
-
-  node = math.parse(expression);
-
-  step = parseFloat($("#step").val());
-  lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
-  upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
-
-  try{
-    node.eval({x: lowerBound});
-  }
-  catch(e){
-    displayError("Oops! We couldn't parse that equation");
-    return;
-  }
-
-  isGraph = true;
-
-  $("#error").hide();
-
-  $("#coordinates").show();
-  $("#polar").html("");
-  $("#rectangular").html("");
-  $("#integralrepresentation p").html("");
-
-  //Initialize values
-  scalingFactor = (canvas.height - 40) / (2 * Math.round(getMaxRadius()));
-
   ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
+  $("#loading").show();
 
-  drawAxes();
-  drawGrid();
-  drawGraph();
+  setTimeout(function(){
+    expression = $("#expression").val().replace(/θ/g, "x").replace(/π/g, "pi").replace(/•/g, "*");
 
-  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    node = math.parse(expression);
+
+    step = parseFloat($("#step").val());
+    lowerBound = math.eval($("#lowerbound").val().replace(/π/g, "pi"));
+    upperBound = math.eval($("#upperbound").val().replace(/π/g, "pi"));
+
+    try{
+      node.eval({x: lowerBound});
+    }
+    catch(e){
+      displayError("Oops! We couldn't parse that equation");
+      return;
+    }
+
+    isGraph = true;
+
+    $("#error").hide();
+
+    $("#coordinates").show();
+    $("#polar").html("");
+    $("#rectangular").html("");
+    $("#integralrepresentation p").html("");
+
+    //Initialize values
+    scalingFactor = (canvas.height - 40) / (2 * Math.round(getMaxRadius()));
+
+    drawAxes();
+    drawGrid();
+    drawGraph();
+
+    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    $("#loading").hide();
+  }, 0);
 }
 
 function drawAxes(){
