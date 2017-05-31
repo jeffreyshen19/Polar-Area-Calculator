@@ -65,20 +65,13 @@ function drawAxes(){
 }
 
 function drawGrid(){
-  //Create the grid of lines spaced accordingly
+  //Create the polar grid
   ctx.beginPath();
   ctx.strokeStyle = "#9a9a9a";
   ctx.lineWidth = 2;
   for(var i = 1; true; i++){
     if(scalingFactor * i > canvas.width / 2) break;
-    ctx.moveTo(0, canvas.height / 2 + scalingFactor * i);
-    ctx.lineTo(canvas.width, canvas.height / 2 + scalingFactor * i);
-    ctx.moveTo(0, canvas.height / 2 - scalingFactor * i);
-    ctx.lineTo(canvas.width, canvas.height / 2 - scalingFactor * i);
-    ctx.moveTo(canvas.width / 2 + scalingFactor * i, 0);
-    ctx.lineTo(canvas.width / 2 + scalingFactor * i, canvas.height);
-    ctx.moveTo(canvas.width / 2 - scalingFactor * i, 0);
-    ctx.lineTo(canvas.width / 2 - scalingFactor * i, canvas.height);
+    ctx.arc(canvas.width / 2, canvas.height / 2, scalingFactor * i, 0, 2 * Math.PI);
   }
   ctx.stroke();
   ctx.beginPath();
@@ -86,14 +79,7 @@ function drawGrid(){
   ctx.lineWidth = 1;
   for(var i = 0.5; true; i++){
     if(scalingFactor * i > canvas.width / 2) break;
-    ctx.moveTo(0, canvas.height / 2 + scalingFactor * i);
-    ctx.lineTo(canvas.width, canvas.height / 2 + scalingFactor * i);
-    ctx.moveTo(0, canvas.height / 2 - scalingFactor * i);
-    ctx.lineTo(canvas.width, canvas.height / 2 - scalingFactor * i);
-    ctx.moveTo(canvas.width / 2 + scalingFactor * i, 0);
-    ctx.lineTo(canvas.width / 2 + scalingFactor * i, canvas.height);
-    ctx.moveTo(canvas.width / 2 - scalingFactor * i, 0);
-    ctx.lineTo(canvas.width / 2 - scalingFactor * i, canvas.height);
+    ctx.arc(canvas.width / 2, canvas.height / 2, scalingFactor * i, 0, 2 * Math.PI);
   }
   ctx.stroke();
 }
