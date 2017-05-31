@@ -42,6 +42,8 @@ function handleClick(e){
         }
       }
 
+      console.log(zones);
+
       if(a == null && b == null){
         a = zones[zones.length - 1];
         b = zones[0];
@@ -78,7 +80,7 @@ function updateIntegral(a, b, val){
 
 function calculateTheta(){
   var candidates = [];
-  for(var theta = lowerBound; theta <= upperBound; theta += 0.001){
+  for(var theta = lowerBound; theta <= upperBound; theta += 0.0005){
     var r = node.eval({x: theta});
     if(r <= 0.002 && r >= 0) {
       candidates.push(theta);
