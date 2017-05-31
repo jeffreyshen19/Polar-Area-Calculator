@@ -82,6 +82,17 @@ function drawGrid(){
     ctx.arc(canvas.width / 2, canvas.height / 2, scalingFactor * i, 0, 2 * Math.PI);
   }
   ctx.stroke();
+  ctx.beginPath();
+  for(var i = 0; i <= 1/2; i += 1 / 24){
+    if(i % 1/2 != 0){
+      var x = canvas.height / (2 * Math.tan(Math.PI * i));
+      ctx.moveTo(x + canvas.width / 2, 0);
+      ctx.lineTo(canvas.width / 2 - x, canvas.height);
+      ctx.moveTo(canvas.width / 2 - x, 0);
+      ctx.lineTo(canvas.width / 2 + x, canvas.height);
+    }
+  }
+  ctx.stroke();
 }
 
 function drawGraph(){
