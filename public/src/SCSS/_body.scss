@@ -100,6 +100,29 @@ center#mobile{
   transform: translateY(-50%);
 }
 
+#zoomControl{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: $white;
+
+  i{
+    display: block;
+    font-size: 1.2em;
+    padding: 10px;
+    color: $gray;
+    cursor: pointer;
+    &:first-child{
+      border-bottom: 1px solid #dcdcdc;
+    }
+  }
+
+  .disabled{
+    cursor: default;
+    color: #dcdcdc;
+  }
+}
+
 @media screen and (max-height: 575px){
   #credits{
     display: none;

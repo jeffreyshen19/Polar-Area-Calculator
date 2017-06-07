@@ -81,7 +81,8 @@ input {
 
 #wrapper {
   display: flex;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   #wrapper #sidebar, #wrapper #graph {
     height: 100vh;
     position: relative;
@@ -173,6 +174,23 @@ center#mobile {
   transform: translateX(-36%);
   top: 50%;
   transform: translateY(-50%); }
+
+#zoomControl {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #EEEEEE; }
+  #zoomControl i {
+    display: block;
+    font-size: 1.2em;
+    padding: 10px;
+    color: #393E46;
+    cursor: pointer; }
+    #zoomControl i:first-child {
+      border-bottom: 1px solid #dcdcdc; }
+  #zoomControl .disabled {
+    cursor: default;
+    color: #dcdcdc; }
 
 @media screen and (max-height: 575px) {
   #credits {

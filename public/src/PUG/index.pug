@@ -7,6 +7,7 @@ html(lang = "en")
 
     title Polar Area Calculator
     
+    link(href = "./bower_components/font-awesome/css/font-awesome.min.css" rel = "stylesheet" type = "text/css")
     link(href = "./public/dist/main.css" rel = "stylesheet" type = "text/css")
     script(type = "text/javascript" async src = "./bower_components/MathJax/MathJax.js?config=TeX-MML-AM_CHTML")
     script(src = "./bower_components/jquery/dist/jquery.min.js")
@@ -55,4 +56,7 @@ html(lang = "en")
           p Project by Jeffrey Shen (See the source code <a href = "https://github.com/jeffreyshen19/Polar-Area-Calculator">here</a>)
       #graph
         canvas#graphCanvas(width = "500" height = "500")
+      #zoomControl(hidden)
+        i.fa.fa-fw.fa-search-plus#zoomIn(onclick = "zoomIn()")
+        i.fa.fa-fw.fa-search-minus#zoomOut(onclick = "zoomOut()")
           

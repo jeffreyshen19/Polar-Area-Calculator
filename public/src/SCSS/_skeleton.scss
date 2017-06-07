@@ -1,6 +1,7 @@
 #wrapper{
   display: flex;
   overflow: hidden;
+  position: relative;
 
   #sidebar, #graph{
     height: 100vh;
