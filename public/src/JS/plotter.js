@@ -143,38 +143,6 @@ function displayError(error){
   $("#error").show();
 }
 
-/*function zoomIn(){
-  //This method takes care of plotting the graphs
-  ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
-  scalingFactor += 100;
-
-  if(scalingFactor > 100) $("#zoomOut").removeClass("disabled");
-
-  drawAxes();
-  drawGrid();
-  drawGraph();
-
-  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-}
-
-function zoomOut(){
-  //This method takes care of plotting the graphs
-  ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
-  if(scalingFactor > 100) {
-    scalingFactor -= 100;
-    $("#zoomOut").removeClass("disabled");
-  }
-  else $("#zoomOut").addClass("disabled");
-
-  if(scalingFactor <= 100) $("#zoomOut").addClass("disabled");
-
-  drawAxes();
-  drawGrid();
-  drawGraph();
-
-  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-}*/
-
 function zoomIn(){
   //This method takes care of plotting the graphs
   ctx.clearRect(0, 0, canvas.width, canvas.height); //Clear canvas
