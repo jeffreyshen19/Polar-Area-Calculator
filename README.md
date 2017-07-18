@@ -3,7 +3,7 @@ An online tool to graph and calculate the area enclosed by polar curves. Created
 
 ## Usage
 
-Visit [jeffreyshen19.github.io/Polar-Area-Calculator/][https://jeffreyshen19.github.io/Polar-Area-Calculator/] to access the project.
+Visit [jeffreyshen19.github.io/Polar-Area-Calculator/](https://jeffreyshen19.github.io/Polar-Area-Calculator/) to access the project.
 
 ## Built With
 
